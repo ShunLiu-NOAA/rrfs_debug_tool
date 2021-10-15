@@ -1,6 +1,12 @@
 #!/bin/bash -l
 #set -x
 
+########################
+# input:
+# file1: rrfs file1
+# file2: rrfs file2
+########################
+
 echo $SHELL
 echo `date`
 source ~/bin/loadp.sh
