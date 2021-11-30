@@ -1,4 +1,5 @@
 
+#this script should be placed in /gpfs/dell6/emc/modeling/noscrub/Shun.Liu/com 
 #get rap observation
 rapdir=/gpfs/hps/nco/ops/com/rap/prod/rap.20211118
 mkdir -p rap/prod/rap.20211118

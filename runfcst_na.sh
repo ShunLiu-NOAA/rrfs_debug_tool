@@ -106,7 +106,8 @@ export OMP_NUM_THREADS=2
 #-----------------------------------------
 
 
-EXECfv3=/gpfs/dell2/emc/modeling/noscrub/Shun.Liu/fv3lamdax/regional_workflow/exec
+EXECfv3=/gpfs/dell2/emc/modeling/noscrub/emc.campara/fv3lamdax/regional_workflow/exec
+#EXECfv3=/gpfs/dell2/emc/modeling/noscrub/Shun.Liu/fv3lamdax/regional_workflow/exec
 export pgm=regional_forecast.x
 #. prep_step
 #startmsg

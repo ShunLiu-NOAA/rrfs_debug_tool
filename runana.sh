@@ -3,11 +3,11 @@
 #BSUB -eo test.err
 #BSUB -oo test.out
 #BSUB -J fv3.c768
-#BSUB -W 00:10
-#BSUB -q "dev2"
-#BSUB -n 320
-#BSUB -R span[ptile=20]
-#BSUB -R affinity[core(2):distribute=balance]
+#BSUB -W 00:45
+#BSUB -q "dev"
+#BSUB -n 700 
+#BSUB -R span[ptile=28]
+##BSUB -R affinity[core(2):distribute=balance]
 #
 set -x
 
@@ -64,8 +64,11 @@ module list
 exec "$@"
 
 #cd /gpfs/dell5/ptmp/Shun.Liu/fv3lamda/tmpnwprd/regional_firstguess_2021081112
-cd /gpfs/dell1/ptmp/Shun.Liu/stmp/tmpnwprd/testdomain_rrfs_conus_3km/2021081106/anal_gsi_spinup
+cd /gpfs/dell1/ptmp/Shun.Liu/stmp/tmpnwprd/rrfs_NA_3km_retro/2021111806/anal_gsi_spinup
 #EXEC=/gpfs/dell6/emc/modeling/noscrub/Shun.Liu/fv3lamda/regional_workflow/exec/regional_chgres_cube.x
-EXEC=/gpfs/dell6/emc/modeling/noscrub/Shun.Liu/fv3lamda/regional_workflow/exec/regional_gsi.x
+#EXEC=/gpfs/dell6/emc/modeling/noscrub/Shun.Liu/fv3lamda/regional_workflow/exec/regional_gsi.x
+#rm -f pe0*
+#rm -f obs_input*
+EXEC=/gpfs/dell6/emc/modeling/noscrub/emc.campara/Shun.Liu/rrfs/ufs-srweather-app/bin/regional_gsi.x
 
 mpirun $EXEC <gsiparm.anl > outtest 2> errtest
