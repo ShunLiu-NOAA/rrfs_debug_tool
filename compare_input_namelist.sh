@@ -5,6 +5,12 @@ shun_para=/gpfs/dell6/emc/modeling/noscrub/Shun.Liu/rrfs/fix/parm_RRFS_NA_3km/th
 echo ############################
 echo ############################
 set -x
+diff $shun_para/input_sar_firstguess.nml $emc_para/input_sar_firstguess.nml
+set +x 
+
+echo ############################
+echo ############################
+set -x
 diff $shun_para/input_sar_da_hourly.nml_no_gsi_bdy $emc_para/input_sar_da_hourly.nml
 set +x 
 echo ############################
