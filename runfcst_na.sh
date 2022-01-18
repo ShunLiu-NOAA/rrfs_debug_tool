@@ -3,8 +3,8 @@
 #BSUB -eo test.err
 #BSUB -oo test.out
 #BSUB -J shun_test
-#BSUB -W 00:10
-#BSUB -q "devhigh"
+#BSUB -W 00:50
+#BSUB -q "dev"
 #BSUB -n 1092 
 #BSUB -R span[ptile=14]
 #BSUB -R affinity[core(2):distribute=balance]
@@ -45,11 +45,12 @@ elif [ "$machine" = "jet" ] ; then
   . /apps/lmod/lmod/init/sh
 fi
 
-jobpre=regional_forecast_tm06
+job=regional_forecast_tm06
 module use ${HOMEfv3}/modulefiles/wcoss_dell_p3
 jobpre=$(echo ${job} | cut -c1-17)
 if [ "${jobpre}" = "regional_forecast" ]; then
-  module load fv3
+  #module load fv3
+  module load ufs_wcoss_dell_p3
 elif [ "${jobpre}" = "regional_bufrpost" ]; then
   module load bufr
 elif [ "${jobpre}" = "regional_post_con" ]; then
@@ -88,10 +89,10 @@ ulimit -a
 
 #module load impi/18.0.1
 #module load lsf/10.1
-module list
-module use /gpfs/dell2/emc/modeling/noscrub/emc.nemspara/soft/modulefiles
-module list
-module load esmf/8.1.0bs21
+#module list
+#module use /gpfs/dell2/emc/modeling/noscrub/emc.nemspara/soft/modulefiles
+#module list
+#module load esmf/8.1.0bs21
 
 export OMP_NUM_THREADS=2
 
@@ -107,6 +108,8 @@ export OMP_NUM_THREADS=2
 
 
 EXECfv3=/gpfs/dell2/emc/modeling/noscrub/emc.campara/fv3lamdax/regional_workflow/exec
+#cd /gpfs/dell1/ptmp/Shun.Liu/stmp/tmpnwprd/rrfs_NA_3km/2022010706/regional_forecast_tm06_2022010712
+cd /gpfs/dell1/ptmp/Shun.Liu/stmp/tmpnwprd/rrfs_NA_3km/2022010706/fcst_fv3lam_spinup
 #EXECfv3=/gpfs/dell2/emc/modeling/noscrub/Shun.Liu/fv3lamdax/regional_workflow/exec
 export pgm=regional_forecast.x
 #. prep_step
