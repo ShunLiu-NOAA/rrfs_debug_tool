@@ -65,11 +65,12 @@ exec "$@"
 
 #cd /gpfs/dell5/ptmp/Shun.Liu/fv3lamda/tmpnwprd/regional_firstguess_2021081112
 #cd /gpfs/dell1/ptmp/Shun.Liu/stmp/tmpnwprd/rrfs_NA_3km_retro/2021111806/anal_gsi_spinup
-cd /gpfs/dell1/ptmp/Shun.Liu/stmp/tmpnwprd/rrfs_NA_3km/2021121206/anal_gsi_spinup
+#cd /gpfs/dell1/ptmp/Shun.Liu/stmp/tmpnwprd/rrfs_NA_3km/2021121206/anal_gsi_spinup
+cd /gpfs/dell1/ptmp/Shun.Liu/regional_gsianl_tm06_2022012312
 #EXEC=/gpfs/dell6/emc/modeling/noscrub/Shun.Liu/fv3lamda/regional_workflow/exec/regional_chgres_cube.x
 #EXEC=/gpfs/dell6/emc/modeling/noscrub/Shun.Liu/fv3lamda/regional_workflow/exec/regional_gsi.x
-#rm -f pe0*
-#rm -f obs_input*
+rm -f pe0*
+rm -f obs_input*
 EXEC=/gpfs/dell6/emc/modeling/noscrub/emc.campara/Shun.Liu/rrfs/ufs-srweather-app/bin/regional_gsi.x
 
 mpirun $EXEC <gsiparm.anl > outtest 2> errtest
