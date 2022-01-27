@@ -1,16 +1,16 @@
 #!/bin/bash
 
-mydate=20220122
-cyc=12
+mydate=20220124
+cyc=00
 cdate=$mydate$cyc
 
 #logdir=/gpfs/dell2/emc/modeling/noscrub/Shun.Liu/test/lamlog/fv3lamdax_shun/20220119
 
-logdir=/gpfs/dell2/ptmp/Shun.Liu/fv3lamdax/log
-slogdir=/gpfs/dell2/emc/modeling/noscrub/Shun.Liu/test/lamlog/fv3lamdax_shun/$mydate/$cyc
+#logdir=/gpfs/dell2/ptmp/Shun.Liu/fv3lamdax/log
+#slogdir=/gpfs/dell2/emc/modeling/noscrub/Shun.Liu/test/lamlog/fv3lamdax_shun/$mydate/$cyc
 
-#logdir=/gpfs/dell2/ptmp/emc.campara/fv3lamdax/log
-#slogdir=/gpfs/dell2/emc/modeling/noscrub/Shun.Liu/test/lamlog/fv3lamdax_emc/$mydate/$cyc
+logdir=/gpfs/dell2/ptmp/emc.campara/fv3lamdax/log
+slogdir=/gpfs/dell2/emc/modeling/noscrub/Shun.Liu/test/lamlog/fv3lamdax_emc/$mydate/$cyc
 
 mkdir -p $slogdir
 
