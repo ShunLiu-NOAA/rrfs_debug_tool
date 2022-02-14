@@ -66,11 +66,16 @@ exec "$@"
 #cd /gpfs/dell5/ptmp/Shun.Liu/fv3lamda/tmpnwprd/regional_firstguess_2021081112
 #cd /gpfs/dell1/ptmp/Shun.Liu/stmp/tmpnwprd/rrfs_NA_3km_retro/2021111806/anal_gsi_spinup
 #cd /gpfs/dell1/ptmp/Shun.Liu/stmp/tmpnwprd/rrfs_NA_3km/2021121206/anal_gsi_spinup
-cd /gpfs/dell1/ptmp/Shun.Liu/regional_gsianl_tm06_2022012312
+cd /gpfs/dell1/ptmp/Shun.Liu/regional_gsianl_tm06_2022012712
 #EXEC=/gpfs/dell6/emc/modeling/noscrub/Shun.Liu/fv3lamda/regional_workflow/exec/regional_chgres_cube.x
-#EXEC=/gpfs/dell6/emc/modeling/noscrub/Shun.Liu/fv3lamda/regional_workflow/exec/regional_gsi.x
 rm -f pe0*
 rm -f obs_input*
-EXEC=/gpfs/dell6/emc/modeling/noscrub/emc.campara/Shun.Liu/rrfs/ufs-srweather-app/bin/regional_gsi.x
+cp /gpfs/dell2/ptmp/Shun.Liu/fv3lamdax/fv3lamdax.20220127/12/guess.tm06/sfc_data.tile7.nc fv3_sfcdata
+cp /gpfs/dell2/ptmp/Shun.Liu/fv3lamdax/fv3lamdax.20220127/12/guess.tm06/gfs_data.tile7.nc .
+ln -sf gfs_data.tile7.nc fv3_dynvars
+ln -sf gfs_data.tile7.nc fv3_tracer
+#EXEC=/gpfs/dell6/emc/modeling/noscrub/emc.campara/Shun.Liu/rrfs/ufs-srweather-app/bin/regional_gsi.x
+#EXEC=/gpfs/dell2/emc/modeling/noscrub/Shun.Liu/fv3lamdax/regional_workflow/exec/regional_gsi.x
+EXEC=/gpfs/dell2/emc/modeling/noscrub/Shun.Liu/fv3lamdax/regional_workflow/sorc1/regional_gsi.fd_06jan21_tingcode/exec/global_gsi.x
 
 mpirun $EXEC <gsiparm.anl > outtest 2> errtest
