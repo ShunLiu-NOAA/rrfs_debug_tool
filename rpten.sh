@@ -14,6 +14,7 @@ cyc=$2
 dataemc=/gpfs/dell2/emc/modeling/noscrub/Shun.Liu/test/lamlog/fv3lamdax_emc/$cdate/$cyc
 datashun=/gpfs/dell2/emc/modeling/noscrub/Shun.Liu/test/lamlog/fv3lamdax_shun/$cdate/$cyc
 datadir=/gpfs/dell1/ptmp/Shun.Liu/tmp
+mkdir -p $datadir
 
 cd $datadir
 grep forecast $dataemc/regional_forecast_tm00_${cyc}.log* > emc
