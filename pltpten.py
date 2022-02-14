@@ -42,6 +42,9 @@ if __name__ == '__main__':
               myptend1.append([float(s) for s in line.split() if isfloat(s)])
   
   dat1=np.array(myptend1)
+  dat2=np.array(myptend1)
+
+  dat2[:,1]=(dat[:,1]-dat1[:,1])*10.0
 
 # Start the figure
   fig = plt.figure(figsize=(8, 6))
@@ -50,8 +53,9 @@ if __name__ == '__main__':
   plt.title(mytitle)
   plt.ylabel('hPa/hr')
   plt.xlabel('Timestep (hours)')
-  nhr=800
+  nhr=4800
   plt.plot(dat[0:nhr,0],dat[0:nhr,1],color='red',label="EMC para")
-  plt.plot(dat1[0:nhr,0],dat1[0:nhr,1],color='black',label="no LBC expansion")
+  plt.plot(dat1[0:nhr,0],dat1[0:nhr,1],color='black',label="pressure layer intp")
+  plt.plot(dat2[0:nhr,0],dat2[0:nhr,1],color='blue',label="(para-exp)x10")
   plt.legend()
   plt.savefig('./ptend.png',bbox_inches='tight')
