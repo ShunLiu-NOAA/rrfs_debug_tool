@@ -1,12 +1,12 @@
 #!/bin/bash
 
 
-mydate=`date "+%Y%m%d%H" --date="6 hour ago"`
+mydate=`date "+%Y%m%d%H" --date="24 hour ago"`
 echo $mydate
 
-rundir=/mnt/lfs4/BMC/nrtrr/NCO_dirs/stmp/tmpnwprd/RRFS_NA_3km_dev1/$mydate
+rundir=/gpfs/dell1/ptmp/Shun.Liu/stmp/tmpnwprd/RRFS_NA_3km_dev1/$mydate
 
-fitdir=/mnt/lfs1/BMC/wrfruc/Shun.Liu/test/jet_fit2obs/$mydate
+fitdir=/gpfs/dell2/emc/modeling/noscrub/Shun.Liu/test/wcoss_fit2obs/$mydate
 
 if [ -d $rundir/anal_gsi_spinup ]
 then
