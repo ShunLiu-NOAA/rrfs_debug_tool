@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-for ((i=30;i>=6;i--));
+for ((i=80;i>=6;i--));
 do
   echo $i
 
