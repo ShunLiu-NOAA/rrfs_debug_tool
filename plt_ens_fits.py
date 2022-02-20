@@ -35,23 +35,33 @@ if __name__ == '__main__':
 #   for d in sys.path:
 #     print d
 
-    stream = open("config.yaml", 'r')
+    stream = open("config_ens_fits.yaml", 'r')
     config = yaml.safe_load(stream)
 
     OBSTYPE=config['OBSTYPE']
-    VarName=config['VarName']
+    cyctime=config['cyctime']
+    hpc=config['hpc']
     fldir=config['paths']['inputdir']
+    nmem=config['nmember']
 
     print(fldir)
+    nmem=nmem+1
 
-    exit()
+    if OBSTYPE=="wind":
+      fortfile="fort.202"
+    elif OBSTYPE=="t":
+      fortfile="fort.203"
 
 
-    fldir='/scratch2/NCEPDEV/stmp3/Shun.Liu/stmp/tmpnwprd/RRFS_conus_3km/2021120823'
     mytmp=[]
-    for i in range(1,17):
-      fname=fldir+'/mem'+str(i).zfill(4)+'/observer_gsi/fort.202'
-      mem=str(i)
+    for i in range(0,nmem):
+      if i==0 :
+        fname=fldir+'/ensmean'+'/observer_gsi/'+fortfile
+        mem="ensmean"
+      else:
+        fname=fldir+'/mem'+str(i).zfill(4)+'/observer_gsi/'+fortfile
+        #fname=fldir+'/'+str(i)+'/observer_gsi/'+fortfile
+        mem=str(i)
       print(fname)
       keystrings=['o-g 01         asm all        rms']
       with open(fname,'r') as f:
@@ -62,25 +72,29 @@ if __name__ == '__main__':
 
     dat=np.array(mytmp)
     print(dat.shape)
+    #exit()
 
     for i in range(0,13):
       print(dat[0,i],dat[15,i])
     
     levels = [1000, 900, 800, 600, 400, 300, 250, 200, 150, 100, 50, 0]
 
-    figname='wind_rms'
-    tname=figname+'_all'
+    figname=OBSTYPE+'_rms'
+    tname=str(cyctime)+'_'+OBSTYPE+'_rms_'+hpc
 
     plt.rcParams.update({'font.size': 16})
     fig=plt.figure(figsize=(10,10))
     ax=fig.add_subplot(111)
 
     colormap=plt.cm.gist_ncar
-    colorst=[colormap(i) for i in np.linspace(0, 0.9, 16)]
+    colorst=[colormap(i) for i in np.linspace(0, 0.9, nmem)]
 
-    for i in range(0,16):
+    for i in range(0,nmem):
       mem=i
-      plt.plot(dat[i,1:13],levels[:],label=mem,color=colorst[i])
+      if i>0 :
+        plt.plot(dat[i,1:13],levels[:],label=mem,color=colorst[i])
+      else: 
+        plt.plot(dat[i,1:13],levels[:],label=mem,color=colorst[i],linewidth=3,marker='o',markerfacecolor='r',markersize=16)
 
     ax=plt.gca()
     ax.invert_yaxis()
@@ -101,7 +115,7 @@ if __name__ == '__main__':
            handletextpad=0.0, handlelength=1.5,
            fancybox=True, shadow=True,fontsize=10)
 
-    plt.savefig(figname+'.png',bbox_inches='tight',dpi=100)
+    plt.savefig(tname+'.png',bbox_inches='tight',dpi=100)
     plt.clf()
 
     exit()
