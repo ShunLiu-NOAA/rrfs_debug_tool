@@ -1,0 +1,8 @@
+paths:
+   inputdir: /scratch2/NCEPDEV/stmp3/Shun.Liu/36mem/stmp/tmpnwprd/RRFS_conus_3km/2021120819
+   #inputdir: /scratch2/NCEPDEV/fv3-cam/Rajendra.Panda/aws/DA/rrfs.20211209/tm05
+   outputdir: ./
+cyctime: 2021120819
+hpc: hera
+OBSTYPE: t
+nmember: 36
