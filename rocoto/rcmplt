@@ -1,0 +1,72 @@
+module purge
+module load lsf/10.1
+module use /gpfs/dell3/usrx/local/dev/emc_rocoto/modulefiles/
+module load ruby/2.5.1 rocoto/1.3.0rc2 #rocoto/1.2.4
+
+cyctime=202203021400
+
+rocotostat -w FV3LAM_wflow.xml -d FV3LAM_wflow.db -c $cyctime | grep $cyctime >& tmp
+
+test=$(awk '{print $2}' tmp)
+echo $test
+
+for itask in $test
+do
+rocotocomplete -w FV3LAM_wflow.xml -d FV3LAM_wflow.db -c $cyctime -t $itask
+done
+
+exit
+
+#set -x
+awk '{print $2}' tmp > tmp1
+
+
+echo $test
+
+
+exit
+#test=$:wqawk '{print $1, $2}' tmp | grep $cyctime
+rocotocomplete -w FV3LAM_wflow.xml -d FV3LAM_wflow.db -c $cyctime -a
+
+
+
+
+
+exit
+
+taskname=anal_gsi_input_prod
+taskname=run_fcst_prod
+
+taskname=make_lbcs
+taskname=get_extrn_lbcs
+
+taskname=run_fcst_spinup
+taskname=make_ics
+taskname=prep_cyc_prod
+taskname=anal_gsi_input_spinup
+taskname=get_extrn_lbcs
+taskname=get_extrn_ics
+taskname=prep_cyc_spinup
+taskname=run_wgrib2_spinup_f001
+
+rocotocomplete -w FV3LAM_wflow.xml -d FV3LAM_wflow.db -c $cyctime -a
+#rocotocomplete -w FV3LAM_wflow.xml -d FV3LAM_wflow.db -c $cyctime -t $taskname
+exit
+rocotorewind -w FV3LAM_wflow.xml -d FV3LAM_wflow.db -c $cyctime -t $taskname
+rocotoboot -w FV3LAM_wflow.xml -d FV3LAM_wflow.db -c $cyctime -t $taskname
+
+#rocotocheck -w FV3LAM_wflow.xml -d FV3LAM_wflow.db -c $cyctime -t anal_gsi_input_prod
+#rocotoboot -w FV3LAM_wflow.xml -d FV3LAM_wflow.db -c $cyctime -t anal_gsi_input_prod
+#rocotoboot -w FV3LAM_wflow.xml -d FV3LAM_wflow.db -c $cyctime -t prep_start_f000
+#rocotocomplete -w FV3LAM_wflow.xml -d FV3LAM_wflow.db -c $cyctime -t anal_gsi_input_f000
+#rocotoboot -w FV3LAM_wflow.xml -d FV3LAM_wflow.db -c $cyctime -t prep_start_f000
+#rocotoboot -w FV3LAM_wflow.xml -d FV3LAM_wflow.db -c $cyctime -t run_fcst_f000
+exit
+#rocotocheck -w FV3LAM_wflow.xml -d FV3LAM_wflow.db -c 202105180000 -t get_extrn_lbcs
+rocotocheck -w FV3LAM_wflow.xml -d FV3LAM_wflow.db -c 202105180000 -t get_extrn_ics
+rocotoboot -w FV3LAM_wflow.xml -d FV3LAM_wflow.db -c 202105180000 -t get_extrn_ics
+#rocotocheck -w FV3LAM_wflow.xml -d FV3LAM_wflow.db -c 202105180000 -t prep_coldstart
+
+#rocotostat -w FV3LAM_wflow.xml -d FV3LAM_wflow.db -c all
+#rocotocheck -w FV3LAM_wflow.xml -d FV3LAM_wflow.db -c 202105140300 -t anal_gsi_input
+#rocotostat -w /gpfs/dell2/emc/modeling/noscrub/Ming.Hu/rrfs/RRFS_dev2/FV3LAM_wflow.xml -d /gpfs/dell2/emc/modeling/noscrub/Ming.Hu/rrfs/RRFS_dev2/FV3LAM_wflow.db -c all
