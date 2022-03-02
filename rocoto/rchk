@@ -3,57 +3,30 @@ module load lsf/10.1
 module use /gpfs/dell3/usrx/local/dev/emc_rocoto/modulefiles/
 module load ruby/2.5.1 rocoto/1.3.0rc2 #rocoto/1.2.4
 
-cyctime=202202281900
+cyctime=202203021200
 #rocotostat -w FV3LAM_wflow.xml -d FV3LAM_wflow.db -c all
 
-test=41
-
-case $test in
-11)
-taskname=get_extrn_lbcs
-;;
-12)
-taskname=make_ics
-;;
-13)
-taskname=make_lbcs_11
-;;
-14)
-taskname=get_extrn_ics
-;;
-21)
-taskname=prep_cyc_spinup
-;;
-22)
-taskname=anal_gsi_input_spinup
-;;
-23)
-taskname=run_fcst_spinup
-;;
-24)
-taskname=run_post_spinup_f001
-;;
-31)
-taskname=prep_cyc_prod
-;;
-32)
 taskname=anal_gsi_input_prod
-;;
-33)
 taskname=run_fcst_prod
-;;
-34)
-taskname=run_post_f021
-;;
-41)
-taskname=run_clean
-;;
-esac
 
-echo $taskname
+taskname=make_lbcs
+taskname=get_extrn_lbcs
+
+taskname=run_fcst_spinup
+taskname=make_ics
+taskname=prep_cyc_prod
+taskname=anal_gsi_input_spinup
+taskname=run_clean
+taskname=get_extrn_ics
+taskname=prep_cyc_spinup
+taskname=get_extrn_lbcs
 
 
 rocotocheck -w FV3LAM_wflow.xml -d FV3LAM_wflow.db -c $cyctime -t $taskname
+exit
+
+
+
 rocotorewind -w FV3LAM_wflow.xml -d FV3LAM_wflow.db -c $cyctime -t $taskname
 rocotoboot -w FV3LAM_wflow.xml -d FV3LAM_wflow.db -c $cyctime -t $taskname
 
