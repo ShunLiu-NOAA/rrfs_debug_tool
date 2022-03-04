@@ -1,0 +1,8 @@
+paths:
+   inputdir: /gpfs/dell1/ptmp/emc.campara/stmp/tmpnwprd/RRFS_conus_3km/2022030306/fcst_fv3lam_spinup
+   outputdir: ./
+cyctime: 2021120819
+filename: phyf000.nc
+out_nc_file: cref
+VARTYPE: t
+nmember: 36
