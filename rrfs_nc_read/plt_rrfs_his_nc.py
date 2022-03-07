@@ -18,7 +18,7 @@ import pandas as pd
 import yaml
 import ncepy
 
-def plot_world_map(lon, lat, data, plotpath):
+def plot_world_map(lon, lat, data, plotpath,cychr,thisdir):
     # plot generic world map
     fig = plt.figure(figsize=(12,12))
     #ax = fig.add_subplot(1, 1, 1, projection=ccrs.PlateCarree(central_longitude=240))
@@ -83,9 +83,10 @@ def plot_world_map(lon, lat, data, plotpath):
     cs = m.pcolormesh(x, y, tmp2m_1,cmap=cmap,norm=norm)
     cb = m.colorbar(cs, location='bottom',pad=0.05,extend='both')
 
-    plttitle = 'FV3 T at level 10 by %s' % (os.environ['LOGNAME'])
+    plttitle="cref_"+cychr
     plt.title(plttitle)
-    plt.savefig(plotpath,bbox_inches='tight',dpi=100)
+    plotname=thisdir+"/"+plttitle+".png"
+    plt.savefig(plotname,bbox_inches='tight',dpi=100)
     plt.close('all')
 
 def write_to_nc(lon,lat,data,out_nc_file):
@@ -104,23 +105,46 @@ def write_to_nc(lon,lat,data,out_nc_file):
     outnc.variables['data'][:]=data
     outnc.close()
 
-def readfield(rrfsfile,out_nc_file):
+def readfield(rrfsfile,out_nc_file,cychr,thisdir):
     tmpdata = nc.Dataset(rrfsfile,'r')
     lat = tmpdata.variables['lat'][:]
     lon = tmpdata.variables['lon'][:]
     ref = tmpdata.variables['refl_10cm'][:]
+    arrayref=ref.shape
     arrayshape=lat.shape
     print(ref.shape)
     print(lat.shape)
     print(lon.shape)
 
-    plotpath ='ref_ai.png'
-    data=np.empty(arrayshape)
-    data=ref[0,40,:,:]
-    print (data.shape)
+    ref3d=ref[0,:,:,:]
 
-    write_to_nc(lon,lat,data,out_nc_file)
+    plotpath ='ref_i_small.png'
+    data=np.empty(arrayshape)
+    data=ref3d.max(axis=0)
+    #print (data.shape)
+
+    arrayshape=[512,512]
+    lat1=np.empty(arrayshape)    
+    lon1=np.empty(arrayshape)    
+    data1=np.empty(arrayshape)    
+#   512x512 domain
+    nxs=150 
+    nys=650
+    nint=512
+
+#   1024x1024 domain
+#   nxs=150 
+#   nys=150
+#   nint=1024
+
+    lat1=lat[nxs:nxs+nint,nys:nys+nint]
+    lon1=lon[nxs:nxs+nint,nys:nys+nint]
+    data1=data[nxs:nxs+nint,nys:nys+nint]
+    print(lat1.shape)
+
+    write_to_nc(lon1,lat1,data1,out_nc_file)
     
+    plot_world_map(lon1, lat1, data1, plotpath, cychr,thisdir)
 #   plot_world_map(lon, lat, data, plotpath)
 
 
@@ -132,13 +156,20 @@ if __name__ == "__main__":
     fldir=config['paths']['inputdir']
     filename=config['filename']
     outfile=config['out_nc_file']
-    #cyctime=config['cyctime']
+    cyctime=config['cyctime']
     #hpc=config['hpc']
     #nmem=config['nmember']
 
-     
-    out_nc_file=outfile+".nc"
-    rrfsfile=fldir+"/"+filename
-    print(rrfsfile)
-
-    readfield(rrfsfile,out_nc_file)
+    cmd="mkdir "+str(cyctime) 
+    thisdir="./"+str(cyctime)
+    os.system(cmd)
+    cmd="pwd"
+    os.system(cmd)
+    for ifhr in range(0,61):
+      hr=str(ifhr).zfill(3)
+      cychr=str(cyctime)+"_f"+hr
+      out_nc_file=thisdir+"/"+outfile+"_"+str(cyctime)+"_f"+hr+".nc"
+      rrfsfile=fldir+"/"+filename[0:4]+hr+".nc"
+      print(out_nc_file)
+      print(rrfsfile)
+      readfield(rrfsfile,out_nc_file,cychr,thisdir)
