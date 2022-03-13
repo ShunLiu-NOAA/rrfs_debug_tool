@@ -1,8 +1,8 @@
 paths:
-   inputdir: /gpfs/dell1/ptmp/emc.campara/stmp/tmpnwprd/RRFS_conus_3km/2022030512/fcst_fv3lam
+   inputdir: /gpfs/dell1/ptmp/emc.campara/stmp/tmpnwprd/RRFS_conus_3km/2022031300/fcst_fv3lam
    outputdir: ./
-cyctime: 2022030612
-filename: phyf003.nc
-out_nc_file: cref
+cyctime: 2022031300
+filename: phyf000.nc
+out_nc_file: hgt
 VARTYPE: t
 nmember: 36
