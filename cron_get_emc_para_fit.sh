@@ -28,7 +28,7 @@ do
   mv $itm fv3lam.t${cyc}z.fits.$itm
 done
 
-fitdirp=/gpfs/dell5/ptmp/emc.campara/fv3lamdax/fv3lamda.$PDY/$cyc
+fitdirp=/gpfs/dell5/ptmp/emc.campara/fv3lamda/fv3lamda.$PDY/$cyc
 rdasNAt=/gpfs/dell2/emc/modeling/noscrub/Shun.Liu/test/fitobs/fv3lamda_emc.$PDY/$cyc
 mkdir -p $rdasNAt
 cp $fitdirp/*fits.* $rdasNAt
