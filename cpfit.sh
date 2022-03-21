@@ -16,11 +16,11 @@ echo $mydate
 
 #fitdir=/gpfs/dell2/emc/modeling/noscrub/Shun.Liu/test/wcoss_fit2obs_conus/$mydate
 
-#rundir=/gpfs/dell1/ptmp/Shun.Liu/stmp/tmpnwprd/RRFS_conus_3km/$mydate
-#fitdir=/gpfs/dell2/emc/modeling/noscrub/Shun.Liu/test/wcoss_fit2obs_conus_shun/$mydate
+rundir=/gpfs/dell1/ptmp/Shun.Liu/stmp/tmpnwprd/RRFS_conus_3km/$mydate
+fitdir=/gpfs/dell2/emc/modeling/noscrub/Shun.Liu/test/wcoss_fit2obs_conus_shun/$mydate
 
-rundir=/gpfs/dell1/ptmp/emc.campara/stmp/tmpnwprd/RRFS_conus_3km/$mydate
-fitdir=/gpfs/dell2/emc/modeling/noscrub/Shun.Liu/test/wcoss_fit2obs_conus_campara/$mydate
+#rundir=/gpfs/dell1/ptmp/emc.campara/stmp/tmpnwprd/RRFS_conus_3km/$mydate
+#fitdir=/gpfs/dell2/emc/modeling/noscrub/Shun.Liu/test/wcoss_fit2obs_conus_campara/$mydate
 
 if [ -d $rundir/anal_gsi_spinup ]
 then
