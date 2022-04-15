@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-for ((i=80;i>=6;i--));
+for ((i=120;i>=6;i--));
 do
   echo $i
 
@@ -16,7 +16,7 @@ echo $mydate
 
 #fitdir=/gpfs/dell2/emc/modeling/noscrub/Shun.Liu/test/wcoss_fit2obs_conus/$mydate
 
-rundir=/gpfs/dell1/ptmp/Shun.Liu/stmp/tmpnwprd/RRFS_conus_3km/$mydate
+rundir=/gpfs/dell1/ptmp/Shun.Liu/stmp/tmpnwprd/rrfs_a/$mydate
 fitdir=/gpfs/dell2/emc/modeling/noscrub/Shun.Liu/test/wcoss_fit2obs_conus_shun/$mydate
 
 #rundir=/gpfs/dell1/ptmp/emc.campara/stmp/tmpnwprd/RRFS_conus_3km/$mydate
