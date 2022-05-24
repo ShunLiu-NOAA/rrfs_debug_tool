@@ -59,8 +59,8 @@ if __name__ == '__main__':
         fname=fldir+'/ensmean'+'/observer_gsi/'+fortfile
         mem="ensmean"
       else:
-        fname=fldir+'/mem'+str(i).zfill(4)+'/observer_gsi/'+fortfile
-        #fname=fldir+'/'+str(i)+'/observer_gsi/'+fortfile
+        #fname=fldir+'/mem'+str(i).zfill(4)+'/observer_gsi/'+fortfile
+        fname=fldir+'/'+str(i)+'/observer_gsi/'+fortfile
         mem=str(i)
       print(fname)
       keystrings=['o-g 01         asm all        rms']
@@ -103,8 +103,10 @@ if __name__ == '__main__':
 
     ax.xaxis.set_major_formatter(FormatStrFormatter('%.1f'))
 
-    plt.xlabel('wind')
+    plt.xlabel(OBSTYPE)
     plt.ylabel('pressure (hPa)')
+
+    plt.xlim(0,4.5)
 
     box = ax.get_position()
     ax.set_position([box.x0, box.y0, box.width * 0.8, box.height])

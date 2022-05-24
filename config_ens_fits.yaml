@@ -1,8 +1,15 @@
 paths:
    #inputdir: /scratch2/NCEPDEV/stmp3/Shun.Liu/36mem/stmp/tmpnwprd/RRFS_conus_3km/2021120819
-   inputdir: /scratch2/NCEPDEV/fv3-cam/Rajendra.Panda/aws/DA/rrfs.20211209/tm05
+   #inputdir: /scratch2/NCEPDEV/fv3-cam/Rajendra.Panda/aws/DA/rrfs.20211209/tm05
+   #inputdir: /scratch2/NCEPDEV/fv3-cam/Rajendra.Panda/aws/DA/rrfs.20211209-12x8/tm05
+   inputdir: /scratch2/NCEPDEV/fv3-cam/Rajendra.Panda/aws/DA/rrfs.20211209-30x16/tm05
    outputdir: ./
 cyctime: 2021120819
 hpc: aws
 OBSTYPE: t
+#pltTYPE: rms or count
+pltTYPE: rms
+varRange:
+   minvalue: 0.0
+   maxvalue: 4.5
 nmember: 36
