@@ -39,9 +39,12 @@ if __name__ == '__main__':
     config = yaml.safe_load(stream)
 
     OBSTYPE=config['OBSTYPE']
+    pltTYPE=config['pltTYPE']
     cyctime=config['cyctime']
     hpc=config['hpc']
     fldir=config['paths']['inputdir']
+    varmin=config['varRange']['minvalue']
+    varmax=config['varRange']['maxvalue']
     nmem=config['nmember']
 
     print(fldir)
@@ -52,6 +55,11 @@ if __name__ == '__main__':
     elif OBSTYPE=="t":
       fortfile="fort.203"
 
+    if pltTYPE=="rms":
+      keystrings=['o-g 01         asm all        rms']
+    elif pltTYPE=="count":
+      keystrings=['o-g 01         asm all      count']
+ 
 
     mytmp=[]
     for i in range(0,nmem):
@@ -63,7 +71,6 @@ if __name__ == '__main__':
         fname=fldir+'/'+str(i)+'/observer_gsi/'+fortfile
         mem=str(i)
       print(fname)
-      keystrings=['o-g 01         asm all        rms']
       with open(fname,'r') as f:
         for line in f:
           if any(x in line.strip() for x in keystrings):
@@ -79,8 +86,8 @@ if __name__ == '__main__':
     
     levels = [1000, 900, 800, 600, 400, 300, 250, 200, 150, 100, 50, 0]
 
-    figname=OBSTYPE+'_rms'
-    tname=str(cyctime)+'_'+OBSTYPE+'_rms_'+hpc
+    figname=OBSTYPE+'_'+pltTYPE
+    tname=str(cyctime)+'_'+OBSTYPE+'_'+pltTYPE+'_'+hpc
 
     plt.rcParams.update({'font.size': 16})
     fig=plt.figure(figsize=(10,10))
@@ -106,7 +113,7 @@ if __name__ == '__main__':
     plt.xlabel(OBSTYPE)
     plt.ylabel('pressure (hPa)')
 
-    plt.xlim(0,4.5)
+    plt.xlim(varmin,varmax)
 
     box = ax.get_position()
     ax.set_position([box.x0, box.y0, box.width * 0.8, box.height])
