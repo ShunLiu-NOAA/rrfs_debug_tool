@@ -3,7 +3,7 @@
 
 USER=Shun.Liu
 #sdate=2022011900
-PDY=20220315
+PDY=20220320
 cyc=00
 
 sdate=${PDY}$cyc

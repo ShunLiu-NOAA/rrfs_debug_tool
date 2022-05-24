@@ -1,19 +1,13 @@
 #!/bin/bash
+#set -x
 
-for ((i=120;i>=6;i--));
-do
-  echo $i
+USER=Shun.Liu
+mydate=`date "+%Y%m%d" --date="24 hour ago"`
+cyc=`date "+%H" --date="24 hour ago"`
 
-mydate=`date "+%Y%m%d" --date="$i hour ago"`
-cyc=`date "+%H" --date="$i hour ago"`
-#mydate=20220324
-cyc00=00
-cyc12=12
-#mydate=$1
-#cyc=$2
 cdate=$mydate$cyc
 
-if [[ "$cyc" == "00" || "$cyc" == "12" ]]; then
+#logdir=/gpfs/dell2/emc/modeling/noscrub/Shun.Liu/test/lamlog/fv3lamdax_shun/20220119
 
 #logdir=/gpfs/dell2/ptmp/Shun.Liu/fv3lamdax/log
 #slogdir=/gpfs/dell2/emc/modeling/noscrub/Shun.Liu/test/lamlog/fv3lamdax_shun/$mydate/$cyc
@@ -42,6 +36,7 @@ do
   fi
 done
 
+
 logdir=/gpfs/dell5/ptmp/emc.campara/fv3lamda/log
 slogdir=/gpfs/dell2/emc/modeling/noscrub/Shun.Liu/test/lamlog/fv3lamda_emc/$mydate/$cyc
 
@@ -66,6 +61,31 @@ do
   fi
 done
 
+mydate=`date "+%Y%m%d" --date="24 hour ago"`
+cyc=`date "+%H" --date="24 hour ago"`
+echo $mydate
+
+logdir=/gpfs/dell1/ptmp/emc.campara/ptmp/com/logs/RRFS_CONUS/RRFS_conus_3km.$mydate/$cyc
+savedir=/gpfs/dell2/emc/modeling/noscrub/Shun.Liu/test/lamlog/rrfs.$mydate/$cyc
+
+if [ -d $rundir ]
+then
+  mkdir -p $savedir
+  cp $logdir/run_fcst_prod_*.log $savedir
+  cp $logdir/run_fcst_spinup_*.log $savedir
 fi
 
-done
+logdir=/gpfs/dell1/ptmp/Shun.Liu/ptmp/com/logs/RRFS_CONUS/RRFS_conus_3km.$mydate/$cyc
+savedir=/gpfs/dell2/emc/modeling/noscrub/Shun.Liu/test/lamlog/rrfsx.$mydate/$cyc
+
+if [ -d $rundir ]
+then
+  mkdir -p $savedir
+  cp $logdir/run_fcst_prod_*.log $savedir
+  cp $logdir/run_fcst_spinup_*.log $savedir
+fi
+
+exit
+
+exit
+
