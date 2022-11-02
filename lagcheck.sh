@@ -1,4 +1,5 @@
 #!/bin/bash
+# check log file and search queue status
 
 savedir=/lfs/h2/emc/lam/noscrub/emc.lam/Shun.Liu/test/lagcheck
 mkdir -p $savedir
