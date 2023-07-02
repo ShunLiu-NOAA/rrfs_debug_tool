@@ -1,14 +1,24 @@
 #!/bin/env/python
+
+import pyproj
+import cartopy.crs as ccrs
+from cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
 import matplotlib
-matplotlib.use('agg')
+import io
 import matplotlib.pyplot as plt
-import matplotlib.colors as mcolors
-import mpl_toolkits
-from matplotlib import colors
-mpl_toolkits.__path__.append('/gpfs/dell2/emc/modeling/noscrub/gwv/py/lib/python/basemap-1.2.1-py3.6-linux-x86_64.egg/mpl_toolkits/')
-from mpl_toolkits.basemap import Basemap, maskoceans, cm
-#import cartopy.crs as ccrs
-#import cartopy.feature as cfeature
+from PIL import Image
+import matplotlib.image as image
+from matplotlib.gridspec import GridSpec
+import numpy as np
+import time,os,sys,multiprocessing
+import multiprocessing.pool
+
+import ncepy
+from scipy import ndimage
+#from netCDF4 import Dataset
+import cartopy
+from datetime import datetime
+
 import netCDF4 as nc
 import numpy as np
 import argparse
@@ -19,73 +29,88 @@ import yaml
 import ncepy
 
 def plot_world_map(lon, lat, data, plotpath,cychr,thisdir):
-    # plot generic world map
-    fig = plt.figure(figsize=(12,12))
-    #ax = fig.add_subplot(1, 1, 1, projection=ccrs.PlateCarree(central_longitude=240))
-    ax = fig.add_subplot(1, 1, 1)
 
 # NA domain
-    llcrnrlon = -161.0
-    llcrnrlat = 8.5
-    urcrnrlon = -22.75
-    urcrnrlat = 40.25
+    llcrnrlon = -160.0
+    llcrnrlat = 15.0
+    urcrnrlon = -55.0
+    urcrnrlat = 65.0
+    cen_lat = 35.4
+    cen_lon = -105.0
+    xextent = -3700000
+    yextent = -2500000
+    offset = 1
 
-#CONUS domain
-    llcrnrlon=272.5
-    urcrnrlon=281.6
-    llcrnrlat=38.0
-    urcrnrlat=42.5
-    lat_0 = 45.0
-    lon_0 = -98.0
-    lat_ts = 30.0
+# set up the map background with cartopy
+    extent = [-176.,0.,0.5,45.] #lonw, lone, lats, latn
+    myproj=ccrs.Orthographic(central_longitude=-114, central_latitude=54.0, globe=None)
 
-#domain
-    dom="conus"
-    llcrnrlon,llcrnrlat,urcrnrlon,urcrnrlat,res=ncepy.corners_res(dom)    
+# plot generic world map
+    fig = plt.figure(figsize=(12,10))
+    gs = GridSpec(12,10,wspace=0.0,hspace=0.0)
+    ax = fig.add_subplot(gs[0:12,0:8], projection=myproj)
+    ax.set_extent(extent)
+    ax.stock_img()
+    axes = [ax]
 
-#   m = Basemap(ax=ax,projection='stere',lat_ts=lat_ts,lat_0=lat_0,lon_0=lon_0,\
-#                 llcrnrlon=llcrnrlon, llcrnrlat=llcrnrlat,\
-#                 urcrnrlon=urcrnrlon,urcrnrlat=urcrnrlat,\
-#                 rsphere=6371229,resolution='l')
-    m = Basemap(llcrnrlon=llcrnrlon,llcrnrlat=llcrnrlat,urcrnrlon=urcrnrlon,urcrnrlat=urcrnrlat,\
-   	      rsphere=(6378137.00,6356752.3142),\
-   	      resolution=res,projection='lcc',\
-   	      lat_1=30.0,lon_0=-98.0,ax=ax)
+    fline_wd = 0.5  # line width
+    fline_wd_lakes = 0.35  # line width
+    falpha = 0.5    # transparency
 
-    m.fillcontinents(color='LightGrey',zorder=0)
-    m.drawcoastlines(linewidth=0.75)
-    m.drawstates(linewidth=0.5)
-    m.drawcountries(linewidth=0.5)
+  # natural_earth
+#  land=cfeature.NaturalEarthFeature('physical','land',back_res,
+#                    edgecolor='face',facecolor=cfeature.COLORS['land'],
+#                    alpha=falpha)
+#   lakes=cfeature.NaturalEarthFeature('physical','lakes',back_res,
+#                   edgecolor='black',facecolor='none',
+#                   linewidth=fline_wd_lakes,alpha=falpha)
+#   coastlines=cfeature.NaturalEarthFeature('physical','coastline',
+#                   back_res,edgecolor='black',facecolor='none',
+#                   linewidth=fline_wd,alpha=falpha)
+#   states=cfeature.NaturalEarthFeature('cultural','admin_1_states_provinces',
+#                   back_res,edgecolor='black',facecolor='none',
+#                   linewidth=fline_wd,alpha=falpha)
+#   borders=cfeature.NaturalEarthFeature('cultural','admin_0_countries',
+#                   back_res,edgecolor='black',facecolor='none',
+#                   linewidth=fline_wd,alpha=falpha)
+
+# All lat lons are earth relative, so setup the associated projection correct for that data
+    transform = ccrs.RotatedPole(pole_longitude=67.0, pole_latitude=35.0)
+
+#   ax.add_feature(lakes)
+#   ax.add_feature(states)
+#   ax.add_feature(coastlines)
 
     data=data
     vmin=np.min(data)
     vmax=np.max(data)
     print(vmin, vmax)
-    x,y = m(lon,lat)
+    x, y,_ = myproj.transform_points(ccrs.Geodetic(), lon, lat).T
     tmp2m_1=data
 
-    cmap = colors.ListedColormap(['white','lightgray','gray','skyblue','dodgerblue','mediumblue',\
-               'lime','limegreen','green','yellow','gold','darkorange','red','firebrick',\
-               'darkred','fuchsia','darkorchid','black'])
+#   cmap = colors.ListedColormap(['white','lightgray','gray','skyblue','dodgerblue','mediumblue',\
+#              'lime','limegreen','green','yellow','gold','darkorange','red','firebrick',\
+#              'darkred','fuchsia','darkorchid','black'])
 
 #   bounds=[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80]
 #   bounds=[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80]
 
-    maxmark=72
-    intv=int(maxmark)/18
-    print(intv)
-    maxmark=76
-    bounds=range(0,int(maxmark),int(intv))
-    print(bounds)
+#   maxmark=72
+#   intv=int(maxmark)/18
+#   print(intv)
+#   maxmark=76
+#   bounds=range(0,int(maxmark),int(intv))
+#   print(bounds)
 
-    norm = colors.BoundaryNorm(bounds, cmap.N)
+#   norm = colors.BoundaryNorm(bounds, cmap.N)
 
-    cs = m.pcolormesh(x, y, tmp2m_1,cmap=cmap,norm=norm)
-    cb = m.colorbar(cs, location='bottom',pad=0.05,extend='both')
+#   cs = m.pcolormesh(x, y, tmp2m_1,cmap=cmap,norm=norm)
+#   cb = m.colorbar(cs, location='bottom',pad=0.05,extend='both')
 
     plttitle="cref_"+cychr
     plt.title(plttitle)
     plotname=thisdir+"/"+plttitle+".png"
+    print(plotname)
     plt.savefig(plotname,bbox_inches='tight',dpi=100)
     plt.close('all')
 
@@ -142,15 +167,17 @@ def readfield(rrfsfile,out_nc_file,cychr,thisdir):
     data1=data[nxs:nxs+nint,nys:nys+nint]
     print(lat1.shape)
 
+    print("start write nc:")
     write_to_nc(lon1,lat1,data1,out_nc_file)
     
+    print("start plot:")
     plot_world_map(lon1, lat1, data1, plotpath, cychr,thisdir)
 
 def readfield2d(rrfsfile,out_nc_file,cychr,thisdir):
     tmpdata = nc.Dataset(rrfsfile,'r')
     lat = tmpdata.variables['lat'][:]
     lon = tmpdata.variables['lon'][:]
-    hgtsfc = tmpdata.variables['hgtsfc'][:]
+    hgtsfc = tmpdata.variables['hgt_hyblev1'][:]
     arrayshape=lat.shape
 
     hgt=hgtsfc[0,:,:]
@@ -181,6 +208,10 @@ def readfield2d(rrfsfile,out_nc_file,cychr,thisdir):
     print("min:",np.min(data1))
 
     write_to_nc(lon1,lat1,data1,out_nc_file)
+
+    print("start plot:")
+    plotpath="test"
+    plot_world_map(lon1, lat1, data1, plotpath, cychr,thisdir)
 
 
 if __name__ == "__main__":
