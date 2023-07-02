@@ -1,7 +1,7 @@
 paths:
-   inputdir: /lfs/h2/emc/stmp/emc.lam/rrfs/v0.5.2/2023063015/fcst_fv3lam
+   inputdir: /lfs/h2/emc/lam/noscrub/emc.lam/Shun.Liu/test/conus
    outputdir: ./
-cyctime: 2023063015
+cyctime: 2023063023
 filename: phyf000.nc
 out_nc_file: hgt
 VARTYPE: t
