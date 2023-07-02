@@ -1,7 +1,7 @@
 paths:
-   inputdir: /gpfs/dell1/ptmp/emc.campara/stmp/tmpnwprd/RRFS_conus_3km/2022031300/fcst_fv3lam
+   inputdir: /lfs/h2/emc/stmp/emc.lam/rrfs/v0.5.2/2023063015/fcst_fv3lam
    outputdir: ./
-cyctime: 2022031300
+cyctime: 2023063015
 filename: phyf000.nc
 out_nc_file: hgt
 VARTYPE: t
