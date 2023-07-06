@@ -32,7 +32,7 @@ if __name__ == '__main__':
   #fname=sys.argv[1]   
   fname='./lag.log'
   myptend=[]
-  cdate='20221031'
+  cdate='20221122'
   keystrings=[cdate]
   print(fname)
   with open(fname, 'r') as f:
