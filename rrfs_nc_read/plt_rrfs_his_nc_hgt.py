@@ -3,12 +3,14 @@
 import pyproj
 import cartopy.crs as ccrs
 from cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
+import cartopy.feature as cfeature
 import matplotlib
 import io
 import matplotlib.pyplot as plt
 from PIL import Image
 import matplotlib.image as image
 from matplotlib.gridspec import GridSpec
+from matplotlib import colors
 import numpy as np
 import time,os,sys,multiprocessing
 import multiprocessing.pool
@@ -58,6 +60,8 @@ def plot_world_map(lon, lat, data, plotpath,cychr,thisdir):
     falpha = 0.5    # transparency
 
   # natural_earth
+    back_res='50m'
+    back_img='off'
 #  land=cfeature.NaturalEarthFeature('physical','land',back_res,
 #                    edgecolor='face',facecolor=cfeature.COLORS['land'],
 #                    alpha=falpha)
@@ -86,14 +90,16 @@ def plot_world_map(lon, lat, data, plotpath,cychr,thisdir):
     vmax=np.max(data)
     print(vmin, vmax)
     x, y,_ = myproj.transform_points(ccrs.Geodetic(), lon, lat).T
-    tmp2m_1=data
+    tmp2m_1=data.T
+    print(vmin)
+    print(vmax)
 
-#   cmap = colors.ListedColormap(['white','lightgray','gray','skyblue','dodgerblue','mediumblue',\
-#              'lime','limegreen','green','yellow','gold','darkorange','red','firebrick',\
-#              'darkred','fuchsia','darkorchid','black'])
+    cmap = colors.ListedColormap(['white','lightgray','gray','skyblue','dodgerblue','mediumblue',\
+               'lime','limegreen','green','yellow','gold','darkorange','red','firebrick',\
+               'darkred','fuchsia','darkorchid','black'])
 
 #   bounds=[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80]
-#   bounds=[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80]
+    bounds=[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80]
 
 #   maxmark=72
 #   intv=int(maxmark)/18
@@ -102,10 +108,15 @@ def plot_world_map(lon, lat, data, plotpath,cychr,thisdir):
 #   bounds=range(0,int(maxmark),int(intv))
 #   print(bounds)
 
-#   norm = colors.BoundaryNorm(bounds, cmap.N)
+    norm = colors.BoundaryNorm(bounds, cmap.N)
 
-#   cs = m.pcolormesh(x, y, tmp2m_1,cmap=cmap,norm=norm)
-#   cb = m.colorbar(cs, location='bottom',pad=0.05,extend='both')
+    cs = ax.pcolormesh(x, y, tmp2m_1,cmap=cmap,norm=norm)
+    cs.cmap.set_under('white',alpha=0.)
+    cs.cmap.set_over('red')
+    cbar1 = fig.colorbar(cs,ax=ax,orientation='horizontal',pad=0.01,shrink=1.0,extend='max')
+    #cbar1.set_label(units,fontsize=6)
+    cbar1.ax.tick_params(labelsize=6)
+
 
     plttitle="cref_"+cychr
     plt.title(plttitle)
@@ -177,41 +188,42 @@ def readfield2d(rrfsfile,out_nc_file,cychr,thisdir):
     tmpdata = nc.Dataset(rrfsfile,'r')
     lat = tmpdata.variables['lat'][:]
     lon = tmpdata.variables['lon'][:]
-    hgtsfc = tmpdata.variables['hgt_hyblev1'][:]
+    hgtsfc = tmpdata.variables['refdmax'][:]
+    #hgtsfc = tmpdata.variables['hgt_hyblev1'][:]
     arrayshape=lat.shape
 
     hgt=hgtsfc[0,:,:]
 
     data=np.empty(arrayshape)
     data=hgt
-    #print (data.shape)
+    print (data.shape)
 
-    arrayshape=[512,512]
-    lat1=np.empty(arrayshape)
-    lon1=np.empty(arrayshape)
-    data1=np.empty(arrayshape)
+#   arrayshape=[512,512]
+#   lat1=np.empty(arrayshape)
+#   lon1=np.empty(arrayshape)
+#   data1=np.empty(arrayshape)
 #   512x512 domain
-    nxs=150
-    nys=650
-    nint=512
+#   nxs=150
+#   nys=650
+#   nint=512
 
 #   1024x1024 domain
 #   nxs=150 
 #   nys=150
 #   nint=1024
 
-    lat1=lat[nxs:nxs+nint,nys:nys+nint]
-    lon1=lon[nxs:nxs+nint,nys:nys+nint]
-    data1=data[nxs:nxs+nint,nys:nys+nint]
-    print(lat1.shape)
-    print("max:",np.max(data1))
-    print("min:",np.min(data1))
+#   lat1=lat[nxs:nxs+nint,nys:nys+nint]
+#   lon1=lon[nxs:nxs+nint,nys:nys+nint]
+#   data1=data[nxs:nxs+nint,nys:nys+nint]
+#   print(lat1.shape)
+#   print("max:",np.max(data1))
+#   print("min:",np.min(data1))
 
-    write_to_nc(lon1,lat1,data1,out_nc_file)
+#   write_to_nc(lon1,lat1,data1,out_nc_file)
 
     print("start plot:")
     plotpath="test"
-    plot_world_map(lon1, lat1, data1, plotpath, cychr,thisdir)
+    plot_world_map(lon, lat, data, plotpath, cychr,thisdir)
 
 
 if __name__ == "__main__":
