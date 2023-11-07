@@ -1,0 +1,13 @@
+paths:
+   inputdir: /lfs/h2/emc/lam/noscrub/emc.lam/Shun.Liu/test/bufr
+   outputdir: ./
+cyctime: 2023063023
+filename: phyf000.nc
+out_nc_file: hgt
+VARTYPE: ssmis_f17
+nmember: 36
+rrfsobs:
+   inputdir: /lfs/h2/emc/lam/noscrub/emc.lam/Shun.Liu/test/bufr/
+   obs_file_name: amv_whr_nesdis.txt
+   inputna: /lfs/h2/emc/lam/noscrub/emc.lam/Shun.Liu/test/bufr/
+   obs_file_na: goes_16_18.txt
