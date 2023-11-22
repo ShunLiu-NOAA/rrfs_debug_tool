@@ -1,0 +1,10 @@
+paths:
+   inputdir: /lfs/f2/t2o/ptmp/emc/stmp/emc.lam/rrfs/v0.6.9/2023100207/anal_conv_dbz_gsi_spinup
+   outputdir: ./
+cyctime: 2023092418
+filename: fv3_phyvars
+filename1: fv3_dynvars
+filename2: fv3_tracer
+out_nc_file: hgt
+VARTYPE: t
+nmember: 36

@@ -1,0 +1,10 @@
+paths:
+   inputdir: /lfs/f2/t2o/ptmp/emc/ptmp/emc.lam/rrfs/v0.7.5/nwges/2023112206/mem0001/fcst_fv3lam/DA_OUTPUT
+   outputdir: ./
+cyctime: 2023112206
+restartfile: sfc_data.nc
+gridfile: ./fv3_grid_spec
+filename2: fv3_tracer
+out_nc_file: hgt
+VARTYPE: t
+nmember: 36
