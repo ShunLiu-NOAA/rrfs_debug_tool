@@ -1,0 +1,9 @@
+paths1:
+   inputdir1: /lfs/h2/emc/ptmp/emc.lam/rrfs/v0.7.2/nwges/2022072016/fcst_fv3lam_spinup/INPUT
+   restart1: fv_core.res.tile1.nc
+paths2:
+   inputdir2: /lfs/h2/emc/ptmp/emc.lam/rrfs/v0.7.2/nwges/2022072015/fcst_fv3lam_spinup/RESTART
+   restart2: 20220720.160000.fv_core.res.tile1.nc
+cyctime: 2023112206
+gridfile: /lfs/h2/emc/lam/noscrub/emc.lam/Shun.Liu/test/rrfs_debug_tool_fix/fv3_grid_spec
+varname: T
