@@ -48,9 +48,11 @@ def plot_world_map(lon, lat, data, plotpath,cychr,thisdir,varname):
     myproj=ccrs.Orthographic(central_longitude=-114, central_latitude=54.0, globe=None)
 
 # plot generic world map
-    fig = plt.figure(figsize=(18,15))
-    gs = GridSpec(18,15,wspace=0.0,hspace=0.0)
-    ax = fig.add_subplot(gs[0:18,0:15], projection=myproj)
+    figL=60
+    figH=50
+    fig = plt.figure(figsize=(figL,figH))
+    gs = GridSpec(figL,figH,wspace=0.0,hspace=0.0)
+    ax = fig.add_subplot(gs[0:figL,0:figH], projection=myproj)
     ax.set_extent(extent)
 #   ax.stock_img()
     axes = [ax]
@@ -120,7 +122,12 @@ def plot_world_map(lon, lat, data, plotpath,cychr,thisdir,varname):
 #   cs = ax.pcolormesh(x, y, tmp2m_1,cmap=cmap,norm=norm)
     cs = ax.pcolormesh(x, y, tmp2m_1,vmin=vmin,vmax=vmax,cmap=cmap)
     #cb = fig.colorbar(cs, ax=ax, location='bottom',pad=0.05,extend='both')
-    cb = fig.colorbar(cs, ax=ax, orientation='horizontal',pad=0.01)
+
+#   cbar_ax = fig.add_axes([0.09, 0.06, 0.84, 0.02])
+    cb = fig.colorbar(cs, ax=ax, orientation='horizontal',pad=0.01, aspect=40)
+
+    tick_font_size = 25
+    cb.ax.tick_params(labelsize=tick_font_size)
 
     plttitle=varname+cychr
     plt.title(plttitle)
@@ -142,20 +149,20 @@ def readfield(gridfile,rrfsfile1,rrfsfile2,varname):
     ref3d=ref[0,:,:,:]
 
     tmpdata2 = nc.Dataset(rrfsfile2,'r')
-    ref2 = tmpdata1.variables[varname][:]
+    ref2 = tmpdata2.variables[varname][:]
     ref3d2=ref2[0,:,:,:]
 
     data=ref3d[55,:,:]-ref3d2[55,:,:]
     #data=np.amax(ref3d,axis=0)
     print(data.shape)
 
-    for i in range(0,65):
-      t2d=ref3d[i,:,:]-ref3d2[i,:,:]
-      print(np.max(t2d))
+#   for i in range(0,65):
+#     t2d=ref3d[i,:,:]-ref3d2[i,:,:]
+#     print(np.max(t2d),np.max(ref3d[i,:,:]),np.max(ref3d2[i,:,:]))
 #     ref2d=ref3d[i,:,:]
 #     sp2d=sp3d[i,:,:]
 #     print('%s ref %s, sphum %s, T, %s '%(i,np.max(ref2d),np.max(sp2d), np.max(t2d)))
-    exit()
+#   exit()
    
     plotpath='./'
     cychr='00'
