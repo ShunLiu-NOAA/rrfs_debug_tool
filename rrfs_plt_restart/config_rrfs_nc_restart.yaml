@@ -1,7 +1,7 @@
 paths:
-   inputdir: /lfs/h2/emc/ptmp/emc.lam/rrfs/v0.7.2/nwges/2022072016/fcst_fv3lam_spinup/INPUT
+   inputdir: /lfs/f2/t2o/ptmp/emc/ptmp/emc.lam/rrfs/v0.9.1/nwges/2024090400/fcst_fv3lam/INPUT
    outputdir: ./
-cyctime: 2023112206
+cyctime: 2024090400
 restartfile: phy_data.nc
 gridfile: /lfs/h2/emc/lam/noscrub/emc.lam/Shun.Liu/test/rrfs_debug_tool_fix/fv3_grid_spec
 filename2: fv3_tracer
