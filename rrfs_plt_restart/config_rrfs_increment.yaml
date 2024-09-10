@@ -1,9 +1,9 @@
 paths1:
-   inputdir1: /lfs/h2/emc/ptmp/emc.lam/rrfs/v0.7.2/nwges/2022072016/fcst_fv3lam_spinup/INPUT
-   restart1: fv_core.res.tile1.nc
+   inputdir1: /lfs/f2/t2o/ptmp/emc/ptmp/emc.lam/rrfs/v0.7.5/nwges/2023112816/fcst_fv3lam_spinup/INPUT
+   restart1: phy_data.nc
 paths2:
-   inputdir2: /lfs/h2/emc/ptmp/emc.lam/rrfs/v0.7.2/nwges/2022072015/fcst_fv3lam_spinup/RESTART
-   restart2: 20220720.160000.fv_core.res.tile1.nc
-cyctime: 2023112206
+   inputdir2: /lfs/f2/t2o/ptmp/emc/ptmp/emc.lam/rrfs/v0.7.5/nwges/2023112815/fcst_fv3lam_spinup/RESTART
+   restart2: 20231128.160000.phy_data.nc
+cyctime: 2023112816
 gridfile: /lfs/h2/emc/lam/noscrub/emc.lam/Shun.Liu/test/rrfs_debug_tool_fix/fv3_grid_spec
-varname: T
+varname: ref_f3d
