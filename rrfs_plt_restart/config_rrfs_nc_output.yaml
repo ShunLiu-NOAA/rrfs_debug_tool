@@ -1,0 +1,10 @@
+paths:
+   inputdir: /lfs/f2/t2o/ptmp/emc/stmp/emc.lam/rrfs/v0.9.1/2024090400/rrfs_realtime_sasas
+   outputdir: ./
+cyctime: 2024090400
+restartfile: phyf000-00-36.nc
+gridfile: /lfs/h2/emc/lam/noscrub/emc.lam/Shun.Liu/test/rrfs_debug_tool_fix/fv3_grid_spec
+filename2: fv3_tracer
+out_nc_file: hgt
+VARTYPE: ref_f3d
+nmember: 36
