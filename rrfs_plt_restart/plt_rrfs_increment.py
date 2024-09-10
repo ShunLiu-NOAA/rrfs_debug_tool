@@ -152,7 +152,7 @@ def readfield(gridfile,rrfsfile1,rrfsfile2,varname):
     ref2 = tmpdata2.variables[varname][:]
     ref3d2=ref2[0,:,:,:]
 
-    data=ref3d[55,:,:]-ref3d2[55,:,:]
+    data=ref3d[10,:,:]-ref3d2[10,:,:]
     #data=np.amax(ref3d,axis=0)
     print(data.shape)
 
