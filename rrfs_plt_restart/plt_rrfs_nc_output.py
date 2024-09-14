@@ -31,8 +31,11 @@ import yaml
 import ncepy
 
 def plot_world_map(lon, lat, data, plotpath, cychr, thisdir):
-    extent = [-176., 0., 0.5, 45.]
-    myproj = ccrs.Orthographic(central_longitude=-114, central_latitude=54.0)
+# NA domain
+    #extent = [-176., 0., 0.5, 45.]
+    #myproj = ccrs.Orthographic(central_longitude=-114, central_latitude=54.0)
+    extent = [-100.,-80.,25.5,38.] #lonw, lone, lats, latn
+    myproj=ccrs.Orthographic(central_longitude=-100, central_latitude=44.0, globe=None)
 
     fig = plt.figure(figsize=(36, 30))
     gs = GridSpec(36, 30, wspace=0.0, hspace=0.0)
@@ -66,16 +69,17 @@ def plot_world_map(lon, lat, data, plotpath, cychr, thisdir):
     print(f"y has non-finite values: {np.any(~np.isfinite(y))}")
     print(f"z has non-finite values: {np.any(~np.isfinite(data))}")
 
-    cmap = colors.ListedColormap(['white', 'gray', 'skyblue', 'dodgerblue', 'mediumblue',
+    cmap = colors.ListedColormap(['white', 'skyblue', 'dodgerblue', 'mediumblue',
                                   'lime', 'limegreen', 'green', 'yellow', 'gold', 'darkorange',
-                                  'red', 'firebrick', 'darkred', 'fuchsia', 'darkorchid', 'black'])
-    bounds = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80]
+                                  'red', 'firebrick', 'darkred', 'fuchsia', 'darkorchid', 'purple'])
+    bounds = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75]
     norm = colors.BoundaryNorm(bounds, cmap.N)
 
     cs = ax.pcolormesh(x, y, data, cmap=cmap, norm=norm, shading='auto')
-    cb = fig.colorbar(cs, ax=ax, orientation='horizontal', pad=0.01)
+    cb = fig.colorbar(cs, ax=ax, orientation='horizontal', pad=0.001)
 
-    plttitle = f"cref_{cychr}"
+    #plttitle = f"cref_{cychr}"
+    plttitle = f"cref_{cyctime}"
     plt.title(plttitle)
     plotname = f"{plttitle}.png"
     plt.savefig(plotname, bbox_inches='tight', dpi=200)
@@ -99,6 +103,7 @@ def readoutput(rrfsfile, rrfsfile1):
     exit()
 
 if __name__ == "__main__":
+    global cyctime
     stream = open("config_rrfs_nc_output.yaml", 'r')
     config = yaml.safe_load(stream)
 
