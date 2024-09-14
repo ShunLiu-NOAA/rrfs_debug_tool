@@ -44,13 +44,16 @@ def plot_world_map(lon, lat, data, plotpath,cychr,thisdir):
     offset = 1
 
 # set up the map background with cartopy
-    extent = [-176.,0.,0.5,45.] #lonw, lone, lats, latn
-    myproj=ccrs.Orthographic(central_longitude=-114, central_latitude=54.0, globe=None)
+#   extent = [-176.,0.,0.5,45.] #lonw, lone, lats, latn
+#   myproj=ccrs.Orthographic(central_longitude=-114, central_latitude=54.0, globe=None)
+#   extent = [-126.,-55.,15.5,48.] #lonw, lone, lats, latn
+    extent = [-100.,-80.,25.5,38.] #lonw, lone, lats, latn
+    myproj=ccrs.Orthographic(central_longitude=-100, central_latitude=44.0, globe=None)
 
 # plot generic world map
-    fig = plt.figure(figsize=(18,15))
-    gs = GridSpec(18,15,wspace=0.0,hspace=0.0)
-    ax = fig.add_subplot(gs[0:18,0:15], projection=myproj)
+    fig = plt.figure(figsize=(24,20))
+    gs = GridSpec(24,20,wspace=0.0,hspace=0.0)
+    ax = fig.add_subplot(gs[0:24,0:20], projection=myproj)
     ax.set_extent(extent)
 #   ax.stock_img()
     axes = [ax]
@@ -97,11 +100,11 @@ def plot_world_map(lon, lat, data, plotpath,cychr,thisdir):
 #   cmap = colors.ListedColormap(['white','lightgray','gray','skyblue','dodgerblue','mediumblue',\
 #              'lime','limegreen','green','yellow','gold','darkorange','red','firebrick',\
 #              'darkred','fuchsia','darkorchid','black'])
-    cmap = colors.ListedColormap(['white','gray','skyblue','dodgerblue','mediumblue',\
+    cmap = colors.ListedColormap(['white','skyblue','dodgerblue','mediumblue',\
                'lime','limegreen','green','yellow','gold','darkorange','red','firebrick',\
-               'darkred','fuchsia','darkorchid','black'])
+               'darkred','fuchsia','darkorchid','purple'])
 
-    bounds=[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80]
+    bounds=[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75]
 
 #   maxmark=72
 #   maxmark=36
@@ -115,14 +118,14 @@ def plot_world_map(lon, lat, data, plotpath,cychr,thisdir):
 
     cs = ax.pcolormesh(x, y, tmp2m_1,cmap=cmap,norm=norm)
     #cb = fig.colorbar(cs, ax=ax, location='bottom',pad=0.05,extend='both')
-    cb = fig.colorbar(cs, ax=ax, orientation='horizontal',pad=0.01)
+    cb = fig.colorbar(cs, ax=ax, orientation='horizontal',pad=0.01,aspect=60)
 
-    plttitle="cref_"+cychr
+    plttitle = f"cref_{cyctime}"
     plt.title(plttitle)
     #plotname=thisdir+"/"+plttitle+".png"
     plotname=plttitle+".png"
     print(plotname)
-    plt.savefig(plotname,bbox_inches='tight',dpi=100)
+    plt.savefig(plotname,bbox_inches='tight',dpi=200)
     plt.close('all')
 
 def readfield(rrfsfile,rrfsfile1):
@@ -197,6 +200,7 @@ def readfield2d(rrfsfile,out_nc_file,cychr,thisdir):
 
 if __name__ == "__main__":
 
+    global cyctime
     stream = open("config_rrfs_nc_restart.yaml", 'r')
     config = yaml.safe_load(stream)
 
