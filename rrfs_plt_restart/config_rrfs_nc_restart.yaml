@@ -1,10 +1,14 @@
 paths:
-   inputdir: /lfs/f2/t2o/ptmp/emc/ptmp/emc.lam/rrfs/v0.9.1/nwges/2024090400/fcst_fv3lam/INPUT
+   inputdir: /lfs/f2/t2o/ptmp/emc/ptmp/emc.lam/rrfs/v0.9.1/nwges/2024091300/fcst_fv3lam/INPUT
    outputdir: ./
-cyctime: 2024090400
+cyctime: 2024091300_afda
 restartfile: phy_data.nc
 gridfile: /lfs/h2/emc/lam/noscrub/emc.lam/Shun.Liu/test/rrfs_debug_tool_fix/fv3_grid_spec
 filename2: fv3_tracer
 out_nc_file: hgt
 VARTYPE: ref_f3d
 nmember: 36
+inputdir1: /lfs/f2/t2o/ptmp/emc/ptmp/emc.lam/rrfs/v0.9.1/nwges/2024091118/fcst_fv3lam/INPUT
+inputdir1: /lfs/f2/t2o/ptmp/emc/ptmp/emc.lam/rrfs/v0.9.1/nwges/2024091117/fcst_fv3lam/RESTART
+restartfile1: phy_data.nc
+restartfile2: 20240911.180000.phy_data.nc
