@@ -1,5 +1,5 @@
 #! /bin/sh
-#PBS -q devhigh
+#PBS -q pridev
 #PBS -A RRFS-DEV
 #PBS -l walltime=00:45:00
 #PBS -l select=1:mpiprocs=1:ncpus=1
