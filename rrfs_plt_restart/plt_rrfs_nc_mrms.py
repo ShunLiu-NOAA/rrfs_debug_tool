@@ -46,8 +46,8 @@ def plot_world_map(lon, lat, data, plotpath,cychr,thisdir):
 # set up the map background with cartopy
 #   extent = [-176.,0.,0.5,45.] #lonw, lone, lats, latn
 #   myproj=ccrs.Orthographic(central_longitude=-114, central_latitude=54.0, globe=None)
-    #extent = [-126.,-55.,15.5,48.] #lonw, lone, lats, latn
-    extent = [-100.,-80.,25.5,38.] #lonw, lone, lats, latn
+    extent = [-126.,-55.,15.5,48.] #lonw, lone, lats, latn
+    #extent = [-100.,-80.,25.5,38.] #lonw, lone, lats, latn
     myproj=ccrs.Orthographic(central_longitude=-100, central_latitude=44.0, globe=None)
 
 # plot generic world map
