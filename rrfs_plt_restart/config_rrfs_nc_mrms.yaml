@@ -1,8 +1,8 @@
 paths:
-   inputdir: /lfs/h2/emc/lam/noscrub/emc.lam/nwges/mrms/20240913
+   inputdir: /lfs/h2/emc/lam/noscrub/emc.lam/nwges/mrms/20240927
    outputdir: ./
-cyctime: 2024091300_mrms
-restartfile: rrfs.mrms.2024091300.nc
+cyctime: 2024092712_mrms
+restartfile: rrfs.mrms.2024092712.nc
 gridfile: /lfs/h2/emc/lam/noscrub/emc.lam/Shun.Liu/test/rrfs_debug_tool_fix/fv3_grid_spec
 filename2: fv3_tracer
 out_nc_file: hgt
