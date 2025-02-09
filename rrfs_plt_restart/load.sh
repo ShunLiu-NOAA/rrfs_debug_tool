@@ -18,5 +18,5 @@ cd /lfs/h2/emc/lam/save/emc.lam/Shun.Liu/code/rrfs_debug_tool/rrfs_plt_restart/
 
 #python /lfs/h2/emc/lam/save/emc.lam/Shun.Liu/code/rrfs_debug_tool/rrfs_plt_restart/plt_rrfs_nc_output.py
 #python /lfs/h2/emc/lam/save/emc.lam/Shun.Liu/code/rrfs_debug_tool/rrfs_plt_restart/plt_rrfs_nc_restart.py
-python /lfs/h2/emc/lam/save/emc.lam/Shun.Liu/code/rrfs_debug_tool/rrfs_plt_restart/plt_rrfs_nc_restart_surface.py
-#python /lfs/h2/emc/lam/save/emc.lam/Shun.Liu/code/rrfs_debug_tool/rrfs_plt_restart/plt_rrfs_nc_mrms.py
+#python /lfs/h2/emc/lam/save/emc.lam/Shun.Liu/code/rrfs_debug_tool/rrfs_plt_restart/plt_rrfs_nc_restart_surface.py
+python /lfs/h2/emc/lam/save/emc.lam/Shun.Liu/code/rrfs_debug_tool/rrfs_plt_restart/plt_rrfs_nc_mrms.py
