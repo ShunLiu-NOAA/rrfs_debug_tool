@@ -1,0 +1,60 @@
+LOG:[14:51:49 16.4.2025]  submitted: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem009 job_size:6342
+LOG:[14:51:49 16.4.2025]  submitted: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem010 job_size:6342
+LOG:[14:51:49 16.4.2025]  submitted: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem016 job_size:6342
+LOG:[14:51:49 16.4.2025]  submitted: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem028 job_size:6342
+LOG:[14:51:51 16.4.2025]  submitted: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem001 job_size:6342
+LOG:[14:51:52 16.4.2025]  submitted: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem029 job_size:6342
+LOG:[14:51:53 16.4.2025]  submitted: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem004 job_size:6342
+LOG:[14:51:54 16.4.2025]  submitted: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem019 job_size:6342
+LOG:[14:51:54 16.4.2025]  submitted: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem020 job_size:6342
+LOG:[14:51:54 16.4.2025]  submitted: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem023 job_size:6342
+LOG:[14:51:55 16.4.2025]  submitted: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem005 job_size:6342
+LOG:[14:51:55 16.4.2025]  submitted: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem014 job_size:6342
+LOG:[14:51:55 16.4.2025]  submitted: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem017 job_size:6342
+LOG:[14:51:56 16.4.2025]  submitted: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem022 job_size:6342
+LOG:[14:51:57 16.4.2025]  submitted: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem002 job_size:6342
+LOG:[14:51:57 16.4.2025]  submitted: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem003 job_size:6342
+LOG:[14:51:57 16.4.2025]  submitted: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem012 job_size:6342
+LOG:[14:51:57 16.4.2025]  submitted: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem018 job_size:6342
+LOG:[14:51:57 16.4.2025]  submitted: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem024 job_size:6342
+LOG:[14:51:58 16.4.2025]  submitted: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem007 job_size:6342
+LOG:[14:51:58 16.4.2025]  submitted: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem008 job_size:6342
+LOG:[14:51:58 16.4.2025]  submitted: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem013 job_size:6342
+LOG:[14:51:58 16.4.2025]  submitted: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem021 job_size:6342
+LOG:[14:51:58 16.4.2025]  submitted: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem026 job_size:6342
+LOG:[14:51:58 16.4.2025]  submitted: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem027 job_size:6342
+LOG:[14:51:58 16.4.2025]  submitted: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem030 job_size:6342
+LOG:[14:51:59 16.4.2025]  submitted: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem006 job_size:6342
+LOG:[14:51:59 16.4.2025]  submitted: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem011 job_size:6342
+LOG:[14:51:59 16.4.2025]  submitted: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem025 job_size:6342
+LOG:[14:52:00 16.4.2025]  submitted: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem015 job_size:6342
+LOG:[15:07:34 16.4.2025]  complete: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem001
+LOG:[15:07:35 16.4.2025]  complete: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem023
+LOG:[15:07:35 16.4.2025]  complete: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem019
+LOG:[15:07:36 16.4.2025]  complete: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem029
+LOG:[15:07:36 16.4.2025]  complete: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem009
+LOG:[15:07:36 16.4.2025]  complete: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem010
+LOG:[15:07:37 16.4.2025]  complete: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem006
+LOG:[15:07:37 16.4.2025]  complete: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem020
+LOG:[15:07:39 16.4.2025]  complete: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem016
+LOG:[15:07:41 16.4.2025]  complete: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem022
+LOG:[15:07:44 16.4.2025]  complete: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem028
+LOG:[15:07:45 16.4.2025]  complete: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem003
+LOG:[15:07:47 16.4.2025]  complete: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem025
+LOG:[15:07:48 16.4.2025]  complete: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem008
+LOG:[15:07:48 16.4.2025]  complete: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem030
+LOG:[15:07:48 16.4.2025]  complete: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem024
+LOG:[15:07:49 16.4.2025]  complete: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem017
+LOG:[15:07:49 16.4.2025]  complete: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem002
+LOG:[15:07:52 16.4.2025]  complete: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem014
+LOG:[15:07:52 16.4.2025]  complete: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem013
+LOG:[15:07:53 16.4.2025]  complete: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem018
+LOG:[15:07:53 16.4.2025]  complete: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem005
+LOG:[15:07:53 16.4.2025]  complete: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem015
+LOG:[15:07:53 16.4.2025]  complete: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem011
+LOG:[15:07:53 16.4.2025]  complete: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem012
+LOG:[15:07:56 16.4.2025]  complete: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem007
+LOG:[15:07:56 16.4.2025]  complete: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem004
+LOG:[15:07:56 16.4.2025]  complete: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem027
+LOG:[15:08:01 16.4.2025]  complete: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem026
+LOG:[15:08:03 16.4.2025]  complete: /nco_rrfs_dev_14/primary/14/rrfs/v1.0/forecast/enkf/jrrfs_enkf_forecast_mem021
