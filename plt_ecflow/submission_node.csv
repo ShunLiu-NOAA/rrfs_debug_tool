@@ -1,4 +1,4 @@
-Member ID, node
+Member ID,node
 jrrfs_clean, 0
 jrrfs_det_analysis_gsi, 60
 jrrfs_det_analysis_gsi_diag, 1
@@ -27,7 +27,7 @@ jrrfs_det_save_restart_spinup_f001, 1
 jrrfs_det_update_lbc_soil, 1
 jrrfs_det_update_lbc_soil_spinup, 1
 jrrfs_enkf_analysis_nonvarcld_mem, 3
-jrrfs_enkf_forecast_mem001, 13
+jrrfs_enkf_forecast_mem, 13
 jrrfs_enkf_observer_gsi_ensmean, 10
 jrrfs_enkf_observer_gsi_mem, 10
 jrrfs_enkf_prep_cyc_ensmean, 10
