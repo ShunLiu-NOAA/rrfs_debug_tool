@@ -1,0 +1,14 @@
+paths:
+   inputdir: /lfs/h2/emc/ptmp/emc.lam/Shun.Liu/blending
+   outputdir: ./
+cyctime: 2025080700
+restartfile: new_minus_old.preblend.nc
+gridfile: /lfs/h2/emc/lam/noscrub/emc.lam/Shun.Liu/test/rrfs_debug_tool_fix/fv3_grid_spec
+filename2: fv3_tracer
+out_nc_file: hgt
+VARTYPE: u_cold2fv3
+nmember: 36
+inputdir1: /lfs/f2/t2o/ptmp/emc/ptmp/emc.lam/rrfs/v0.9.1/nwges/2024091118/fcst_fv3lam/INPUT
+inputdir1: /lfs/f2/t2o/ptmp/emc/ptmp/emc.lam/rrfs/v0.9.1/nwges/2024091117/fcst_fv3lam/RESTART
+restartfile1: phy_data.nc
+restartfile2: 20240911.180000.phy_data.nc
