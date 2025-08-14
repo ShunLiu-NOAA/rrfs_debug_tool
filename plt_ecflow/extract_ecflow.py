@@ -3,7 +3,7 @@ from datetime import datetime
 import pandas as pd
 
 # Read the original log file
-with open("./ecflow.all", "r", encoding="utf-8") as file:
+with open("ecflow.all", "r", encoding="utf-8") as file:
     lines = file.readlines()
 
 # Create dictionaries to store submit and complete times for each member
@@ -17,6 +17,7 @@ complete_pattern = r"LOG:\[(.*?)\]  complete: .*?/(jrrfs_[^\s/]*)"
 
 # Extract and parse timestamps for each member
 for line in lines:
+    #print(line)
     submit_match = re.search(submit_pattern, line)
     complete_match = re.search(complete_pattern, line)
     if submit_match:
@@ -27,6 +28,8 @@ for line in lines:
         time_str = complete_match.group(1)
         member = f"{complete_match.group(2)}"
         complete_times[member] = datetime.strptime(time_str, "%H:%M:%S %d.%m.%Y")
+
+#exit()
 
 # Build a DataFrame and calculate the time difference in seconds
 data = []
