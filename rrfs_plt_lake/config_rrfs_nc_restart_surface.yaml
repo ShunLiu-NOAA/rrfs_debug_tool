@@ -1,0 +1,20 @@
+paths:
+   inputdir: /lfs/h3/emc/lam/noscrub/ecflow/ptmp/emc.lam/ecflow_rrfs/para/com/rrfs/v1.0/rrfs.20250814/12/forecast/INPUT 
+   outputdir: ./
+cyctime: 2025081318_lake
+restartfile: sfc_data.nc
+gridfile: /lfs/h2/emc/lam/noscrub/emc.lam/Shun.Liu/test/rrfs_debug_tool_fix/fv3_grid_spec
+
+
+
+
+#out_nc_file: hgt
+#filename2: fv3_tracer
+#VARTYPE: ref_f3d
+#nmember: 36
+#inputdir1: /lfs/f2/t2o/ptmp/emc/ptmp/emc.lam/rrfs/v0.9.1/nwges/2024091118/fcst_fv3lam/INPUT
+#inputdir1: /lfs/f2/t2o/ptmp/emc/ptmp/emc.lam/rrfs/v0.9.1/nwges/2024091117/fcst_fv3lam/RESTART
+#restartfile1: phy_data.nc
+#restartfile2: 20240911.180000.phy_data.nc
+#inputdir: /lfs/f2/t2o/ptmp/emc/Shun.Liu/com/rrfs/v1.0/refs.20250723/12/m001/forecast_enfcst/DA_OUTPUT
+#inputdir: /lfs/h3/emc/lam/noscrub/ecflow/ptmp/emc.lam/ecflow_rrfs/para/com/rrfs/v1.0/refs.20250723/12/m001/forecast_enfcst/DA_OUTPUT
