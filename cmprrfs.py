@@ -4,8 +4,8 @@ matplotlib.use('agg')
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 import mpl_toolkits
-mpl_toolkits.__path__.append('/gpfs/dell2/emc/modeling/noscrub/gwv/py/lib/python/basemap-1.2.1-py3.6-linux-x86_64.egg/mpl_toolkits/')
-from mpl_toolkits.basemap import Basemap, maskoceans
+#mpl_toolkits.__path__.append('/gpfs/dell2/emc/modeling/noscrub/gwv/py/lib/python/basemap-1.2.1-py3.6-linux-x86_64.egg/mpl_toolkits/')
+#from mpl_toolkits.basemap import Basemap, maskoceans
 #import cartopy.crs as ccrs
 #import cartopy.feature as cfeature
 import netCDF4 as nc
