@@ -4,12 +4,12 @@
 #tfhr="000 048 096 240"
 tcyc="00"
 tfhr="000"
-for fdate in $(seq -f "%02g" 01 30)
+for fdate in $(seq -f "%02g" 01 31)
 do
   for cyc in $tcyc ; do
   for fhr in $tfhr ; do
-  for imon in $(seq -f "%02g" 04 04);do
-  thisdate=2022${imon}${fdate}
+  for imon in $(seq -f "%02g" 12 12);do
+  thisdate=2021${imon}${fdate}
   #grbfile=/lfs/h1/ops/prod/com/gfs/v16.3/gfs.${thisdate}/${cyc}/atmos/gfs.t${cyc}z.pgrb2.0p25.f$fhr
   grbfile=/lfs/h2/emc/ptmp/emc.lam/Shun.Liu/gfs.${thisdate}/${cyc}/atmos/gfs.t${cyc}z.pgrb2.0p25.f$fhr
   mkdir -p ./gfs/${thisdate}/${cyc}/
