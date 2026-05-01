@@ -5,7 +5,7 @@
 #PBS -l select=1:ncpus=1:mem=2G
 #PBS -l walltime=5:59:00
 #PBS -j oe
-#PBS -N gfs_hpss_$YEAR$MON
+#PBS -N log_gfs_hpss
 
 set -x
 
@@ -21,10 +21,10 @@ edate=$EDATE
 for iday in $(seq -f "%02g" $sdate $edate)
 do
  echo $iday
- htar xf /NCEPPROD/hpssprod/runhistory/rh${year}/${year}${mon}/${year}${mon}${iday}/com_gfs_v16.3_gfs.${year}${mon}${iday}_00.gfs_pgrb2.tar ./gfs.${year}${mon}${iday}/00/atmos/gfs.t00z.pgrb2.0p25.f000
+ #htar xf /NCEPPROD/hpssprod/runhistory/rh${year}/${year}${mon}/${year}${mon}${iday}/com_gfs_v16.3_gfs.${year}${mon}${iday}_00.gfs_pgrb2.tar ./gfs.${year}${mon}${iday}/00/atmos/gfs.t00z.pgrb2.0p25.f000
 
  #for data before 2022/11/29
  #htar xf /NCEPPROD/hpssprod/runhistory/rh${year}/${year}${mon}/${year}${mon}${iday}/com_gfs_v16.2_gfs.${year}${mon}${iday}_00.gfs_pgrb2.tar ./gfs.${year}${mon}${iday}/00/atmos/gfs.t00z.pgrb2.0p25.f000
  #for data before 2022/06/27
- #htar xf /NCEPPROD/hpssprod/runhistory/rh${year}/${year}${mon}/${year}${mon}${iday}/com_gfs_prod_gfs.${year}${mon}${iday}_00.gfs_pgrb2.tar ./gfs.${year}${mon}${iday}/00/atmos/gfs.t00z.pgrb2.0p25.f000
+ htar xf /NCEPPROD/hpssprod/runhistory/rh${year}/${year}${mon}/${year}${mon}${iday}/com_gfs_prod_gfs.${year}${mon}${iday}_00.gfs_pgrb2.tar ./gfs.${year}${mon}${iday}/00/atmos/gfs.t00z.pgrb2.0p25.f000
 done
