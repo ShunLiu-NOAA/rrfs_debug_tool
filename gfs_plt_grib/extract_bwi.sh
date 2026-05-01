@@ -5,13 +5,21 @@ tcyc="00"
 tfhr="000"
 rm -f ttt
 
-year=2023
-startday=`date -d "20230101" +%j`
-endday=`date -d "20230131" +%j`
+year=2025
+mon=02
+day1=01
+day2=28
+
+yyyymmdd1=$year$mon$day1
+yyyymmdd2=$year$mon$day2
+echo $yyyymmdd1
+echo $yyyymmdd2
+startday=`date -d ${yyyymmdd1} +%j`
+endday=`date -d ${yyyymmdd2} +%j`
 echo $startday, $endday
 #year=`echo $thisdate | cut -c1-4`
 
-rm -f tmp_202301.csv
+rm -f tmp_${year}${mon}.csv
 
 echo "Date,tm000" > tmp.csv
 for fdate in $(seq -f "%08g" $startday $endday)
@@ -32,7 +40,7 @@ do
   #grbfile=$savedir/gfs.${thisdate}.t${cyc}z.grib2.f240
   #tmp10=$(wgrib2 $grbfile -match "TMP:surface" -lon 283.31 39.18 | awk -F'=' '{print $NF}')
   #echo $thisdate, $tmp, $tmp02, $tmp04, $tmp10 >> ttt
-  echo $thisdate,$tmp >> tmp_202301.csv
+  echo $thisdate,$tmp >> tmp_${year}${mon}.csv
   done; done
 done
 
