@@ -15,47 +15,54 @@ import glob
 import os
 import pandas as pd
 
-def readfield(file1,file2):
+import netCDF4 as nc
+import numpy as np
 
-    tmpdata = nc.Dataset(file1,'r')
-    u = tmpdata.variables['u_s'][:]
-    v = tmpdata.variables['v_s'][:]
-    W = tmpdata.variables['w'][:]
-    T = tmpdata.variables['t'][:]
+
+def readfield(file1, file2):
+
+    # 1. Read first file
+    tmpdata = nc.Dataset(file1, 'r')
+    u = tmpdata.variables['u'][:]
+    v = tmpdata.variables['v'][:]
+    W = tmpdata.variables['W'][:]
+    T = tmpdata.variables['T'][:]
     delp = tmpdata.variables['delp'][:]
     tmpdata.close()
 
-    tmpdata = nc.Dataset(file2,'r')
-    u1 = tmpdata.variables['u_s'][:]
-    v1 = tmpdata.variables['v_s'][:]
-    W1 = tmpdata.variables['w'][:]
-    T1 = tmpdata.variables['t'][:]
+    # 2. Read second file
+    tmpdata = nc.Dataset(file2, 'r')
+    u1 = tmpdata.variables['u'][:]
+    v1 = tmpdata.variables['v'][:]
+    W1 = tmpdata.variables['W'][:]
+    T1 = tmpdata.variables['T'][:]
     delp1 = tmpdata.variables['delp'][:]
     tmpdata.close()
 
-    result=np.subtract(u, u1)
-    print("u diff::", np.sum(result))
+    # ==========================================
+    # 3. HELPER FUNCTION
+    # ==========================================
+    def print_diff_stats(var_name, var_base, var_compare):
+        # Calculate raw difference and absolute difference
+        result = np.subtract(var_base, var_compare)
+        abs_diff = np.abs(result)
+        
+        # Find maximum absolute difference and its location
+        max_abs_diff = np.max(abs_diff)
+        max_loc = np.unravel_index(np.argmax(abs_diff), abs_diff.shape)
+        
+        # Print results neatly
+        print(f"{var_name} diff sum:: {np.sum(result)}")
+        print(f"{var_name} max abs diff:: {max_abs_diff} at index {max_loc}")
+        print("-" * 40) # Adds a separator line for readability
 
-    result=np.subtract(v, v1)
-    print("v diff::", np.sum(result))
-
-    result=np.subtract(T, T1)
-    print("T diff::", np.sum(result))
-
-    result=np.subtract(delp, delp1)
-    print("delp diff::", np.sum(result))
-
-#   sphum = tmpdata.variables['sphum'][:]
-#   liq_wat = tmpdata.variables['liq_wat'][:]
-#   ice_wat = tmpdata.variables['ice_wat'][:]
-#   rainwat = tmpdata.variables['rainwat'][:]
-#   snowwat = tmpdata.variables['snowwat'][:]
-#   graupel = tmpdata.variables['graupel'][:]
-#   ice_nc = tmpdata.variables['ice_nc'][:]
-#   rain_nc = tmpdata.variables['rain_nc'][:]
-#   sgs_tke = tmpdata.variables['sgs_tke'][:]
-#   tmpdata.close()
-
+    # ==========================================
+    # 4. EXECUTE FOR ALL VARIABLES
+    # ==========================================
+    print_diff_stats("u", u, u1)
+    print_diff_stats("v", v, v1)
+    print_diff_stats("T", T, T1)
+    print_diff_stats("delp", delp, delp1)
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
